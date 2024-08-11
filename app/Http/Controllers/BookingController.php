@@ -472,12 +472,6 @@ class BookingController extends Controller
         return view('admin.menu.bookings', compact('bookings', 'outlets', 'slots'));
     }
 
-    public function today()
-    {
-        $bookings = Booking::where('booking_date', Carbon::today())->get();
-        return view('admin.menu.bookings', compact('bookings'));
-    }
-
     //download csv
     public function downloadCsv()
     {
