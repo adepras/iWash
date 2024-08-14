@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Booking;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,7 +16,6 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\QueueController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehicleController;
