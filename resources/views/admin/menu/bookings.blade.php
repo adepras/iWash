@@ -24,6 +24,7 @@
                     <th>Nama User</th>
                     <th>Layanan</th>
                     <th>Paket</th>
+                    <th>Harga</th>
                     <th>Tanggal Booking</th>
                     <th>Waktu Booking</th>
                     <th>Status</th>
@@ -38,6 +39,7 @@
                         <td>{{ $booking->user->name }}</td>
                         <td>{{ $booking->service }}</td>
                         <td>{{ $booking->package }}</td>
+                        <td>{{ $booking->price }}</td>
                         <td>{{ $booking->booking_date }}</td>
                         <td>{{ $booking->time_booking }}</td>
                         <td>{{ $booking->status }}</td>

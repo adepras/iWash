@@ -15,16 +15,16 @@ class DashboardController extends Controller
 
         $todayBookingsCount = Booking::whereDate('created_at', Carbon::today())->count();
 
-        $yearlyIncome = Booking::whereYear('created_at', Carbon::now()->year)->sum('total_price');
+        $yearlyIncome = Booking::whereYear('created_at', Carbon::now()->year)->sum('price');
 
         $monthlyIncome = Booking::whereMonth('created_at', Carbon::now()->month)
             ->whereYear('created_at', Carbon::now()->year)
-            ->sum('total_price');
+            ->sum('price');
 
         $weeklyIncome = Booking::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-            ->sum('total_price');
+            ->sum('price');
 
-        $dailyIncome = Booking::whereDate('created_at', Carbon::today())->sum('total_price');
+        $dailyIncome = Booking::whereDate('created_at', Carbon::today())->sum('price');
 
         $incomeLabels = [];
         $incomeData = [];
@@ -33,7 +33,7 @@ class DashboardController extends Controller
             $incomeLabels[] = $month->format('F');
             $incomeData[] = Booking::whereMonth('created_at', $month->month)
                 ->whereYear('created_at', $month->year)
-                ->sum('total_price');
+                ->sum('price');
         }
 
         $satisfactionData = [
