@@ -228,7 +228,7 @@ body {
     gap: 20px;
 }
 
-.container-tools form{
+.container-tools form {
     margin: 0;
     padding: 0;
 }
@@ -260,4 +260,90 @@ body {
 .btn-refresh img {
     width: 22px;
     height: auto;
+}
+
+/* Dashboard */
+.container {
+    width: 100%;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1 1 calc(50% - 20px);
+    min-width: 100px;
+}
+
+.card-chart {
+    min-width: 500px;
+    height: 400px;
+}
+
+.card-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    background-color: #007bff;
+    color: white;
+    border-radius: 12px 12px 0 0;
+    padding: 10px 15px;
+}
+
+.card-body {
+    width: 100%;
+    height: 140px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 0 0 12px 12px;
+}
+
+.card-title a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.card-title a:hover {
+    text-decoration: underline;
+}
+
+canvas {
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+#incomeChart,
+#satisfactionChart {
+    height: 280px;
+    margin: 0 auto;
+    display: block;
+}
+
+h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #343a40;
+    text-align: center;
+}
+
+.chartjs-render-monitor {
+    border-radius: 12px;
+}
+
+.chartjs-tooltip {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #ffffff !important;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
 }
