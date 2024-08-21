@@ -109,25 +109,19 @@ class BookingController extends Controller
         DB::beginTransaction();
 
         try {
-            // Cari data booking yang paling baru (dalam 10 detik terakhir)
             $currentTimestamp = Carbon::now();
             $startTimestamp = $currentTimestamp->copy()->subSeconds(10);
 
             $recentBookings = Booking::where([['booking_date', $dateBooking], ['status', 'temporary']])
                 ->whereBetween('created_at', [$startTimestamp, $currentTimestamp])
                 ->get();
-
-            // Urutkan booking berdasarkan estimated duration (untuk menerapkan algoritma Shortest Job First)
             $sortedBookings = $recentBookings->sortBy('estimated');
 
-            // Ambil data booking pada sortedBookings yang memiliki estimated duration paling kecil
             $bookingData = $sortedBookings->first();
 
             if ($bookingData->user_id == Auth::id()) {
-                // Cek dan buat slot berdasarkan estimated duration
                 $slots = $this->checkAndCreateSlotsBasedOnEstimated($bookingData->booking_date, $bookingData->time_booking, $bookingData->estimated);
 
-                // Simpan data booking
                 $booking = new Booking([
                     'id' => (string) \Illuminate\Support\Str::uuid(),
                     'service' => $bookingData->service,
@@ -143,17 +137,14 @@ class BookingController extends Controller
                     'status' => 'pending',
                 ]);
             } else {
-                // Ambil data booking pada sortedBookings yang memiliki estimated duration paling kecil
                 $bookingDataOld = $sortedBookings->where('user_id', Auth::id())->first();
 
                 $slotTemp = Slot::where('date', $bookingDataOld->booking_date)
                     ->where('booking_id', null)
                     ->where('start_time', $bookingDataOld->time_booking)->skip(1)->first();
                 if ($slotTemp) {
-                    // Cek dan buat slot berdasarkan estimated duration
                     $slots = $this->checkAndCreateSlotsBasedOnEstimated($bookingDataOld->booking_date, $bookingDataOld->time_booking, $bookingDataOld->estimated);
 
-                    // Simpan data booking
                     $booking = new Booking([
                         'id' => (string) \Illuminate\Support\Str::uuid(),
                         'service' => $bookingDataOld->service,
