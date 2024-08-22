@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Admin Iwash',
-                'phone_number' => '081219999204',
+                'phone_number' => '081234567890',
                 'email' => 'admin@gmail.com',
                 'address' => 'Kec.Kutoarjo, Kab.Purworejo',
                 'password' => bcrypt('admin#1234'),

@@ -14,7 +14,6 @@ class CustomersTableSeeder extends Seeder
      */
     public function run()
     {
-        Customer::create(['name' => 'Ade Prasetyo', 'email' => 'adeprasetyo06@gmail.com', 'phone' => '81326793922']);
-        Customer::create(['name' => 'Azyumi Azra', 'email' => 'azyumiazraa@gmail.com', 'phone' => '81575359161']);
+        
     }
 }
